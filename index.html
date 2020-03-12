@@ -1,0 +1,46 @@
+
+<html>
+	<head></head>
+	<body>
+		
+		<h1>POSITION USER</h1>
+        <p id="position">
+        
+        Long  : <span id="long">...<span> <br> 
+        Lat :  <span id="lat">...<span> <br> 
+        Curracy :  <span id="cur">...<span>
+        </p>
+		
+		<script>
+			var options = {
+			  enableHighAccuracy: true,
+			  timeout: 5000,
+			  maximumAge: 0
+			};
+
+			function success(pos) {
+			  var crd = pos.coords;
+              longitude = document.getElementById('long');
+              latitude = document.getElementById('lat');
+              curracy = document.getElementById('cur');
+              
+              longitude.innerHTML = `Longitude : ${crd.longitude}`;
+              latitude.innerHTML = `Latitude : ${crd.latitude}`;
+              curracy.innerHTML = `La précision est de ${crd.accuracy} mètres`;
+              
+              
+    //----------VOTRE POSITION AFFICHER DANS LA CONSOLE---------
+			  console.log('Votre position actuelle est :');
+			  console.log(`Latitude : ${crd.latitude}`);
+			  console.log(`Longitude : ${crd.longitude}`);
+			  console.log(`La précision est de ${crd.accuracy} mètres.`);
+			}
+
+			function error(err) {
+			  console.warn(`ERREUR (${err.code}): ${err.message}`);
+			}
+
+			navigator.geolocation.getCurrentPosition(success, error, options);
+		</script>
+	</body>
+</html>
