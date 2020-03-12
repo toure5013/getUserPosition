@@ -1,58 +1,58 @@
-
 <html>
-	<head>
-	<title>Position de l'utilisateur</title>
 
-		.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-	</head>
-	<body>
-		
-		<h1>POSITION USER</h1>
-		<input type="button" class="button" onclick="getPosition()" value="Localisation" style="">
-		<p id="position">
+<head>
+    <title>Position de l'utilisateur</title>
 
-		</p>
-		
-		<script>
-			
-        	 function getPosition() {
-			var options = {
-			  enableHighAccuracy: true,
-			  timeout: 5000,
-			  maximumAge: 0
-			};
+    <style>
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
 
+<body>
 
-			function success(pos) {
-			  var crd = pos.coords;
-              
-            document.getElementById('position').innerHTML = `Longitude : <bold> ${crd.longitude}</bold>  <br> Latitude : <bold>${crd.latitude}</bold> <br> La précision est de <bold>${crd.accuracy} mètres</bold>`;
-              
-              
-    //----------VOTRE POSITION AFFICHER DANS LA CONSOLE---------
-			  console.log('Votre position actuelle est :');
-			  console.log(`Latitude : ${crd.latitude}`);
-			  console.log(`Longitude : ${crd.longitude}`);
-			  console.log(`La précision est de ${crd.accuracy} mètres.`);
-			}
+    <h1>POSITION USER</h1>
+    <input type="button" class="button" onclick="getPosition()" value="Localisation" style="">
+    <p id="position">
 
-			function error(err) {
-			  console.warn(`ERREUR (${err.code}): ${err.message}`);
-			}
+    </p>
 
-			navigator.geolocation.getCurrentPosition(success, error, options);
-		}
-        
-			
-		</script>
-	</body>
+    <script>
+        function getPosition() {
+            var options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            function success(pos) {
+                var crd = pos.coords;
+
+                document.getElementById('position').innerHTML = `Longitude : <bold> ${crd.longitude}</bold>  <br> Latitude : <bold>${crd.latitude}</bold> <br> La précision est de <bold>${crd.accuracy} mètres</bold>`;
+
+                //----------VOTRE POSITION AFFICHER DANS LA CONSOLE---------
+                console.log('Votre position actuelle est :');
+                console.log(`Latitude : ${crd.latitude}`);
+                console.log(`Longitude : ${crd.longitude}`);
+                console.log(`La précision est de ${crd.accuracy} mètres.`);
+            }
+
+            function error(err) {
+                console.warn(`ERREUR (${err.code}): ${err.message}`);
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }
+    </script>
+</body>
+
 </html>
