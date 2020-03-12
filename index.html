@@ -51,7 +51,7 @@
             function success(pos) {
                 var crd = pos.coords;
 
-                //document.getElementById('position').innerHTML = `Longitude : <bold> ${crd.longitude}</bold>  <br> Latitude : <bold>${crd.latitude}</bold> <br> La précision est de <bold>${crd.accuracy} mètres</bold>`;
+                document.getElementById('position').innerHTML = `Longitude : <strong style:"color:red"> ${crd.longitude}</strong>  <br> Latitude : <strong style:"color:red">${crd.latitude}</strong> <br> La précision est de <strong style:"color:red">${crd.accuracy} mètres</strong>`;
 
                 //----------VOTRE POSITION AFFICHER DANS LA CONSOLE---------
                 console.log('Votre position actuelle est :');
