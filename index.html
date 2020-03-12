@@ -5,7 +5,10 @@
 
 <body>
     <h1>POSITION USER</h1>
-    <input type="button" class="button" onclick="getLocationWithApi()" value="Localisation" style="background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">
+    <input type="button" class="button" onclick="getLocationWithApi()" 
+           value="Localisation" 
+           style="background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">
+    
     <p id="position">
             charment de la position .....
     </p>
@@ -16,6 +19,36 @@
     </p>
 
     <script>
+        
+     function getLocationWithApi(){
+        //The endpoint here
+        var endpoint = 'http://ip-api.com/json';
+        var request = new XMLHttpRequest();
+        
+         //prepare request here
+        request.open('GET', endpoint , true);
+            
+        //on data loaded
+        request.onload = function() {
+          // Begin accessing JSON data here
+          var data = JSON.parse(this.response)
+          if (request.status >= 200 && request.status < 400) {
+              if(data.status !== 'success') {
+                        console.log('query failed: ' + response.message);
+                        return
+                }
+                document.getElementById('positionApi').innerHTML = data;
+          } else {
+            console.log('error')
+          }
+        }
+        request.send();
+         getPosition() ;
+        }
+        
+        
+        
+        
         function getPosition() {
             var options = {
                 enableHighAccuracy: true,
@@ -44,31 +77,7 @@
         }
         
         
-        function getLocationWithApi(){
-        //The endpoint here
-        var endpoint = 'http://ip-api.com/json/?fields=status,message,countryCode';
-        var request = new XMLHttpRequest();
-        
-         //prepare request here
-        request.open('GET', endpoint , true);
-            
-        //on data loaded
-        request.onload = function() {
-          // Begin accessing JSON data here
-          var data = JSON.parse(this.response)
-          if (request.status >= 200 && request.status < 400) {
-              if(data.status !== 'success') {
-                        console.log('query failed: ' + response.message);
-                        return
-                }
-                document.getElementById('positionApi').innerHTML = data;
-          } else {
-            console.log('error')
-          }
-        }
-
-        request.send()
-        }
+    
     </script>
 </body>
 </html>
