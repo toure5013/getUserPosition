@@ -1,16 +1,30 @@
 
 <html>
-	<head></head>
+	<head>
+	<title>Position de l'utilisateur</title>
+
+		.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+	</head>
 	<body>
 		
 		<h1>POSITION USER</h1>
-        <p id="position">
-        
-        </p>
+		<input type="button" class="button" onclick="getPosition()" value="Localisation" style="">
+		<p id="position">
+
+		</p>
 		
 		<script>
-        
-        
+			
+        	 function getPosition() {
 			var options = {
 			  enableHighAccuracy: true,
 			  timeout: 5000,
@@ -36,6 +50,9 @@
 			}
 
 			navigator.geolocation.getCurrentPosition(success, error, options);
+		}
+        
+			
 		</script>
 	</body>
 </html>
