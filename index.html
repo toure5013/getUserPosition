@@ -5,28 +5,16 @@
 
 <body>
     <h1>POSITION USER</h1>
-    <input type="button" class="button" onclick="getLocationWithApi()" 
+    <input type="button" class="button" onclick="getPosition()" 
            value="Localisation" 
            style="background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">
-    
     <p id="position">
             charment de la position .....
     </p>
-    
-    
-    
-    
-    
-    
-     <p id="positionApi">
-            charment de la position .....
-    </p>
 
-    
-    
-    
-    
     <script>
+        
+     //Api call is correct but pur site in note in https 
      function getLocationWithApi(){
         //The endpoint here
         var endpoint = 'https://ip-api.com/json';
@@ -37,24 +25,21 @@
             
         //on data loaded
         request.onload = function() {
+            
           // Begin accessing JSON data here
-          var data = JSON.parse(this.response)
+          var data = JSON.parse(this.response);
           if (request.status >= 200 && request.status < 400) {
               if(data.status !== 'success') {
-                        console.log('query failed: ' + response.message);
-                        return
+                    console.log('query failed: ' + response.message);
+                     return
                 }
-                document.getElementById('positionApi').innerHTML = data;
+                document.getElementById('position').innerHTML = data;
           } else {
             console.log('error')
           }
         }
         request.send();
-         getPosition() ;
         }
-        
-        
-        
         
         function getPosition() {
             var options = {
