@@ -6,27 +6,27 @@
 		<h1>POSITION USER</h1>
         <p id="position">
         
-        Long  : <span id="long">...<span> <br> 
-        Lat :  <span id="lat">...<span> <br> 
-        Curracy :  <span id="cur">...<span>
+        Long  : <span id="long" style="color:red">...<span> <br>
+       
+        Lat :  <span id="lat" style="color:red">...<span> <br>
+        
+        Curracy :  <span id="cur" style="color:red">...<span>
         </p>
 		
 		<script>
+        
+        
 			var options = {
 			  enableHighAccuracy: true,
 			  timeout: 5000,
 			  maximumAge: 0
 			};
 
+
 			function success(pos) {
 			  var crd = pos.coords;
-              longitude = document.getElementById('long');
-              latitude = document.getElementById('lat');
-              curracy = document.getElementById('cur');
               
-              longitude.innerHTML = `Longitude : ${crd.longitude}`;
-              latitude.innerHTML = `Latitude : ${crd.latitude}`;
-              curracy.innerHTML = `La précision est de ${crd.accuracy} mètres`;
+            document.getElementById('long').innerHTML = `Longitude : ${crd.longitude} <br> Latitude : ${crd.latitude} <br> La précision est de ${crd.accuracy} mètres`;
               
               
     //----------VOTRE POSITION AFFICHER DANS LA CONSOLE---------
