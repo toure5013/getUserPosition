@@ -44,10 +44,15 @@
         }
         
         
-        function getLocationWithApi(position){
+        function getLocationWithApi(){
+        //The endpoint here
         var endpoint = 'http://ip-api.com/json/?fields=status,message,countryCode';
-        var request = new XMLHttpRequest()
-        request.open('GET', endpoint , true)
+        var request = new XMLHttpRequest();
+        
+         //prepare request here
+        request.open('GET', endpoint , true);
+            
+        //on data loaded
         request.onload = function() {
           // Begin accessing JSON data here
           var data = JSON.parse(this.response)
@@ -63,6 +68,7 @@
         }
 
         request.send()
+        }
     </script>
 </body>
 </html>
